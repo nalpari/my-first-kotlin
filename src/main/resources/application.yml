@@ -19,6 +19,7 @@ spring:
         #        show_sql: true
         format_sql: true
     database-platform: org.hibernate.dialect.H2Dialect
+#    defer-datasource-initialization: true # 초기 데이터 소스를 지연시킵니다
 
 #  sql:
 #    init:

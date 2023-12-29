@@ -4,6 +4,7 @@ import net.devgrr.myfirstkotlin.model.user.HobbyRequest
 import net.devgrr.myfirstkotlin.model.user.HobbyResponse
 import net.devgrr.myfirstkotlin.service.HobbyService
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/hobby")
+@CrossOrigin(origins = ["*"])
 class HobbyController(
     private val hobbyService: HobbyService
 ) {
