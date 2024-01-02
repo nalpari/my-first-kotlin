@@ -19,7 +19,9 @@ data class User (
     @Column
     var username: String = "",
 
-    @OneToMany(fetch = FetchType.EAGER)
+//    @OneToMany(fetch = FetchType.EAGER)
+//    val hobbies : MutableList<Hobby> = mutableListOf(),
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     val hobbies : MutableList<Hobby> = mutableListOf(),
 
 ) : BaseEntity()

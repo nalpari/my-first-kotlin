@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional(readOnly = true)
 class UserService (
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
 ){
     @Transactional
     fun create(userRequest: UserRequest): UserResponse {

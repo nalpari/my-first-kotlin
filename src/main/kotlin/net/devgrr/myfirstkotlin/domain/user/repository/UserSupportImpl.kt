@@ -15,4 +15,21 @@ class UserSupportImpl(
             .where(QUser.user.username.eq(userName))
             .fetch()
     }
+
+    override  fun findAllUsers(): List<User> {
+        val user = QUser.user
+        return queryFactory
+            .selectFrom(user)
+            .leftJoin(user.hobbies).fetchJoin()
+            .fetch()
+    }
+
+    override fun findUserById(id: Long): User? {
+        val user = QUser.user
+        return queryFactory
+            .selectFrom(user)
+            .leftJoin(user.hobbies).fetchJoin()
+            .where(user.id.eq(id))
+            .fetchOne()
+    }
 }
