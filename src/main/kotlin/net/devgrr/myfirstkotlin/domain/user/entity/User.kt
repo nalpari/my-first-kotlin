@@ -21,7 +21,7 @@ data class User (
 
 //    @OneToMany(fetch = FetchType.EAGER)
 //    val hobbies : MutableList<Hobby> = mutableListOf(),
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
     val hobbies : MutableList<Hobby> = mutableListOf(),
 
 ) : BaseEntity()
