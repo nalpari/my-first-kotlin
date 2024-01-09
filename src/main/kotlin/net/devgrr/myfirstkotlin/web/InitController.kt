@@ -3,6 +3,7 @@ package net.devgrr.myfirstkotlin.web
 import jakarta.annotation.PostConstruct
 import net.devgrr.myfirstkotlin.model.user.HobbyRequest
 import net.devgrr.myfirstkotlin.model.user.UserRequest
+import net.devgrr.myfirstkotlin.model.user.UserRequest2
 import net.devgrr.myfirstkotlin.service.HobbyService
 import net.devgrr.myfirstkotlin.service.UserService
 import org.springframework.web.bind.annotation.RestController
@@ -18,6 +19,7 @@ class InitController(
         userService.create(UserRequest("user1", "user1@user1.com", "qwer1234", "서울시 강남구"))
         userService.create(UserRequest("user2", "user2@user2.com", "qwer1234", "서울시 강북구"))
         userService.create(UserRequest("user3", "user3@user3.com", "qwer1234",  "서울시 강서구"))
+        userService.create2(UserRequest2("user4", "user4@user4.com", "user4", "서울시 강동구", listOf("hobby1", "hobby2", "hobby3")))
 
         hobbyService.create(1, HobbyRequest("잠자기"))
         hobbyService.create(1, HobbyRequest("먹기"))

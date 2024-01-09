@@ -5,7 +5,7 @@ import net.devgrr.myfirstkotlin.domain.BaseEntity
 
 @Entity
 @Table(name = "users")
-data class User (
+data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -25,6 +25,6 @@ data class User (
 //    @OneToMany(fetch = FetchType.EAGER)
 //    val hobbies : MutableList<Hobby> = mutableListOf(),
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
-    val hobbies : MutableList<Hobby> = mutableListOf(),
+    val hobbies: MutableList<Hobby> = mutableListOf(),
 
-) : BaseEntity()
+    ) : BaseEntity()

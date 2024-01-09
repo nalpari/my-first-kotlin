@@ -1,6 +1,7 @@
 package net.devgrr.myfirstkotlin.service
 
 import net.devgrr.myfirstkotlin.model.user.UserRequest
+import net.devgrr.myfirstkotlin.model.user.UserRequest2
 import net.devgrr.myfirstkotlin.model.user.UserResponse
 import org.junit.jupiter.api.Test
 
@@ -40,5 +41,18 @@ class UserServiceTest {
         val user = userService.create(userRequest)
 
         assertEquals("user4", user.username)
+    }
+
+    @Test
+    fun create2() {
+        val userRequest = UserRequest2(
+            username = "user5",
+            email = "user5@user5.com",
+            password = "user5",
+            address = "서울시 강동구",
+            hobbies = listOf("hobby1", "hobby2", "hobby3"),
+        )
+
+        val user = userService.create2(userRequest)
     }
 }

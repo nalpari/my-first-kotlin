@@ -1,8 +1,11 @@
 package net.devgrr.myfirstkotlin.service
 
+import net.devgrr.myfirstkotlin.domain.user.entity.Hobby
 import net.devgrr.myfirstkotlin.domain.user.entity.User
+import net.devgrr.myfirstkotlin.domain.user.repository.HobbyRepository
 import net.devgrr.myfirstkotlin.domain.user.repository.UserRepository
 import net.devgrr.myfirstkotlin.model.user.UserRequest
+import net.devgrr.myfirstkotlin.model.user.UserRequest2
 import net.devgrr.myfirstkotlin.model.user.UserResponse
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
@@ -10,9 +13,9 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional(readOnly = true)
-class UserService (
-    private val userRepository: UserRepository,
-){
+class UserService(
+    private val userRepository: UserRepository, private val hobbyRepository: HobbyRepository,
+) {
     @Transactional
     fun create(userRequest: UserRequest): UserResponse {
         val user = User(
@@ -22,6 +25,28 @@ class UserService (
             address = userRequest.address,
         )
         return UserResponse(userRepository.save(user))
+    }
+
+    @Transactional
+    fun create2(userRequest: UserRequest2): UserResponse {
+        val user = User(
+            username = userRequest.username,
+            email = userRequest.email,
+            password = userRequest.password,
+            address = userRequest.address,
+        )
+
+        val resultUser = userRepository.save(user)
+
+        userRequest.hobbies.map {
+            val hobby = Hobby(
+                name = it,
+                user = resultUser,
+            )
+            hobbyRepository.save(hobby)
+        }
+
+        return UserResponse(resultUser)
     }
 
     fun findAll(): List<UserResponse> {

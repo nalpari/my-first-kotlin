@@ -11,6 +11,14 @@ data class UserRequest(
     val address: String,
 )
 
+data class UserRequest2(
+    val username: String,
+    val email: String,
+    val password: String,
+    val address: String,
+    val hobbies: List<String>,
+)
+
 data class UserResponse(
     val id: Long,
     val username: String,
