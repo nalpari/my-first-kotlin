@@ -15,9 +15,9 @@ class InitController(
 
     @PostConstruct
     fun init() {
-        userService.create(UserRequest("user1", "user1@user1.com", "qwer1234"))
-        userService.create(UserRequest("user2", "user2@user2.com", "qwer1234"))
-        userService.create(UserRequest("user3", "user3@user3.com", "qwer1234"))
+        userService.create(UserRequest("user1", "user1@user1.com", "qwer1234", "서울시 강남구"))
+        userService.create(UserRequest("user2", "user2@user2.com", "qwer1234", "서울시 강북구"))
+        userService.create(UserRequest("user3", "user3@user3.com", "qwer1234",  "서울시 강서구"))
 
         hobbyService.create(1, HobbyRequest("잠자기"))
         hobbyService.create(1, HobbyRequest("먹기"))

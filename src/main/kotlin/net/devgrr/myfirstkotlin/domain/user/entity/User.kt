@@ -19,6 +19,9 @@ data class User (
     @Column
     var username: String = "",
 
+    @Column
+    var address: String = "",
+
 //    @OneToMany(fetch = FetchType.EAGER)
 //    val hobbies : MutableList<Hobby> = mutableListOf(),
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
