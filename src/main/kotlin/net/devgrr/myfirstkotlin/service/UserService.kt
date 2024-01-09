@@ -19,6 +19,7 @@ class UserService (
             username = userRequest.username,
             email = userRequest.email,
             password = userRequest.password,
+            address = userRequest.address,
         )
         return UserResponse(userRepository.save(user))
     }
@@ -44,6 +45,7 @@ class UserService (
         with(user) {
             this.username = userRequest.username
             this.email = userRequest.email
+            this.address = userRequest.address
 
 //            UserResponse(userRepository.save(this))
             userRepository.save(this)

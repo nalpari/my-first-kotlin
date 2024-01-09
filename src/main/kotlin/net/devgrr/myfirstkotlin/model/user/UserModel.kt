@@ -8,12 +8,14 @@ data class UserRequest(
     val username: String,
     val email: String,
     val password: String,
+    val address: String,
 )
 
 data class UserResponse(
     val id: Long,
     val username: String,
     val email: String,
+    val address: String,
     val hobbies: List<HobbyResponse>,
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     val createdAt: String,
@@ -26,6 +28,7 @@ data class UserResponse(
                 id = id!!,
                 username = username,
                 email = email,
+                address = address,
                 hobbies = hobbies.sortedByDescending(Hobby::id).map(HobbyResponse::invoke),
                 createdAt = createdAt.toString(),
                 updatedAt = updatedAt.toString(),
