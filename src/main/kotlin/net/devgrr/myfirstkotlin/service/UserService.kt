@@ -36,17 +36,17 @@ class UserService(
             address = userRequest.address,
         )
 
-        val resultUser = userRepository.save(user)
+        val createdUser = userRepository.save(user)
 
         userRequest.hobbies.map {
             val hobby = Hobby(
                 name = it,
-                user = resultUser,
+                user = createdUser,
             )
             hobbyRepository.save(hobby)
         }
 
-        return UserResponse(resultUser)
+        return UserResponse(createdUser)
     }
 
     fun findAll(): List<UserResponse> {
