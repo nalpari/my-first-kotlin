@@ -32,15 +32,15 @@ class UserServiceTest {
     @Test
     fun create() {
         val userRequest = UserRequest(
-            username = "user4",
-            email = "user4@user4.com",
-            password = "user4",
-            address = "서울시 강동구",
+            username = "user6",
+            email = "user6@user6.com",
+            password = "user6",
+            address = "서울시 강서구",
         )
 
         val user = userService.create(userRequest)
 
-        assertEquals("user4", user.username)
+        assertEquals("user6", user.username)
     }
 
     @Test
@@ -54,5 +54,14 @@ class UserServiceTest {
         )
 
         val user = userService.create2(userRequest)
+
+        assertEquals(user.username, userRequest.username)
+    }
+
+    @Test
+    fun findAll() {
+        val users: List<UserResponse> = userService.findAll()
+
+        assertEquals(5, users.size)
     }
 }
