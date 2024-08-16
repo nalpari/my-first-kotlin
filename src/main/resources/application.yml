@@ -32,7 +32,7 @@ logging:
   level:
     root: info
     org.hibernate.SQL: debug
-    com.banseok.thezip: debug
+    net.devgrr.myfirstkotlin: debug
 
 management:
   endpoints:
