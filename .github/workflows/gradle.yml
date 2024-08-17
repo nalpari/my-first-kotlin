@@ -62,6 +62,20 @@ jobs:
     # - name: Build with Gradle 8.5
     #   run: gradle build
 
+    # WAS 인스턴스 접속 & 애플리케이션 실행
+    - name: Connect to WAS & Execute Application
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.WAS_HOST }}
+        username: ${{ secrets.WAS_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.WAS_SSH_PORT }}
+        script: |
+          docker stop $(docker ps -a -f name="api-kotlin" -q)
+          docker rm $(docker ps -a -f name="api-kotlin" -q)
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-docker
+          docker run -d -p 8080:8080 --name api-kotlin ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-docker
+
   dependency-submission:
 
     runs-on: ubuntu-latest
