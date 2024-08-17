@@ -71,10 +71,10 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.WAS_SSH_PORT }}
         script: |
-          docker stop $(docker ps -a -f name="api-kotlin" -q)
-          docker rm $(docker ps -a -f name="api-kotlin" -q)
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-docker
-          docker run -d -p 8080:8080 --name api-kotlin ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-docker
+          sudo docker stop $(docker ps -a -f name="api-kotlin" -q)
+          sudo docker rm $(docker ps -a -f name="api-kotlin" -q)
+          sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-docker
+          sudo docker run -d -p 8080:8080 --name api-kotlin ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-docker
 
   dependency-submission:
 
